@@ -15,6 +15,13 @@ spring:
         service-id: config
         # 找 -dev 的配置文件，在这个配置下就是去 config 服务下找 order-dev.yml 配置文件
       profile: test
+    stream:
+      bindings:
+        # myMessage 是自定义的消息队列的名称
+        myMessage:
+          # 自定义分组名称，该项目的多个实例会被分到 order 组中
+          group: order
+          content-type: application/json
   rabbitmq:
     host: localhost
     port: 5672
