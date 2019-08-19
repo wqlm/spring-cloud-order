@@ -84,6 +84,17 @@
             <artifactId>spring-cloud-starter-hystrix</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+        </dependency>
+       <!-- 想要使用 hystrix-dashboard 还需要引入这个依赖，这里由于 spring-cloud-starter-stream-rabbit 中引入了，就不再重复引入了
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        -->
+
     </dependencies>
 
     <build>

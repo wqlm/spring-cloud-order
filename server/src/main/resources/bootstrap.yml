@@ -44,8 +44,12 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 3000
+            timeoutInMilliseconds: 2000
 
 feign:
   hystrix:
     enabled: true
+
+# 配置 spring 监控服务根路径，默认为 /application
+management:
+  context-path: /
