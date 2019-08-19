@@ -30,3 +30,18 @@ spring:
 #    port: 5672
 #    username: guest
 #    password: guest
+
+hystrix:
+  command:
+    # 为所有带 @HystrixCommand 注解的方法，配置默认的超时时间
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+    # 为带 @HystrixCommand 注解的方法，且方法名为 getProductInfoList 的配置超时时间
+    getProductInfoList:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
