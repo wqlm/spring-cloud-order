@@ -22,6 +22,13 @@ spring:
           # 自定义分组名称，该项目的多个实例会被分到 order 组中
           group: order
           content-type: application/json
+  zipkin:
+    # base-url 填的是 zipkin 服务的地址
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      # 将链路情况输出到 zipkin ，percentage 是抽样百分比，默认是0.1，也就是 10%
+      percentage: 1
 #  redis:
 #    host: localhost
 #    port: 6379
@@ -44,12 +51,16 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 2000
+            timeoutInMilliseconds: 3000
 
-feign:
-  hystrix:
-    enabled: true
+#feign:
+#  hystrix:
+#    enabled: true
 
 # 配置 spring 监控服务根路径，默认为 /application
 management:
   context-path: /
+
+logging:
+  level:
+    org.springframework.cloud.netflix.feign: debug

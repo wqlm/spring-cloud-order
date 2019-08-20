@@ -95,6 +95,23 @@
         </dependency>
         -->
 
+        <!--
+        &lt;!&ndash; spring cloud 服务链路追踪 &ndash;&gt;
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+        &lt;!&ndash; 添加 服务链路追踪数据管理 zipkin  &ndash;&gt;
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+        </dependency>
+        -->
+        <!-- starter-zipkin 包含上面两项 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
