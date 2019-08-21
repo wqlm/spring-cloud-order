@@ -26,18 +26,18 @@ public class HystrixController {
 //    @HystrixCommand(commandProperties = {
 //            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds" ,value = "4000")
 //    })
-    @HystrixCommand(commandProperties = {
-            // 启用熔断器
-            @HystrixProperty(name = "circuitBreaker.enabled",value = "true"),
-            // 请求数量阀值,只有在一个统计窗口内处理的请求数量达到这个阈值，才会进行熔断与否的判断
-            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "10"),
-            // 睡眠窗口毫秒值,睡眠窗口内的请求被降级处理，窗口期到后，再有请求过来会试探服务是否可用，如果可用关闭熔断器，否则 重新进入睡眠窗口
-            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "10000"),
-            // 错误百分比阀值, 默认30,达到后启动熔断
-            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "50")
-    })
+//    @HystrixCommand(commandProperties = {
+//            // 启用熔断器
+//            @HystrixProperty(name = "circuitBreaker.enabled",value = "true"),
+//            // 请求数量阀值,只有在一个统计窗口内处理的请求数量达到这个阈值，才会进行熔断与否的判断
+//            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "10"),
+//            // 睡眠窗口毫秒值,睡眠窗口内的请求被降级处理，窗口期到后，再有请求过来会试探服务是否可用，如果可用关闭熔断器，否则 重新进入睡眠窗口
+//            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "10000"),
+//            // 错误百分比阀值, 默认30,达到后启动熔断
+//            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "50")
+//    })
 
-//    @HystrixCommand
+    @HystrixCommand
     @GetMapping("/getProductInfoList")
     public String getProductInfoList(@RequestParam String token) {
         if("1".equals(token)){

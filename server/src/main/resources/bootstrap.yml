@@ -25,10 +25,13 @@ spring:
   zipkin:
     # base-url 填的是 zipkin 服务的地址
     base-url: http://localhost:9411
+    # 将链路发送到 web 端
+    sender:
+      type: web
   sleuth:
     sampler:
       # 将链路情况输出到 zipkin ，percentage 是抽样百分比，默认是0.1，也就是 10%
-      percentage: 1
+      probability: 1
 #  redis:
 #    host: localhost
 #    port: 6379
@@ -38,24 +41,36 @@ spring:
 #    username: guest
 #    password: guest
 
-hystrix:
-  command:
-    # 为所有带 @HystrixCommand 注解的方法，配置默认的超时时间
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 2000
-    # 为带 @HystrixCommand 注解的方法，且方法名为 getProductInfoList 的配置超时时间
-    getProductInfoList:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 3000
+# Finchley.RELEASE 版 配置方法已更改
+#hystrix:
+#  command:
+#    # 为所有带 @HystrixCommand 注解的方法，配置默认的超时时间
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 2000
+#    # 为带 @HystrixCommand 注解的方法，且方法名为 getProductInfoList 的配置超时时间
+#    getProductInfoList:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 3000
 
+
+
+# Finchley.RELEASE 版 配置方法已更改
 #feign:
 #  hystrix:
 #    enabled: true
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 4000
+        readTimeout: 4000
+        loggerLevel: basic
+
 
 # 配置 spring 监控服务根路径，默认为 /application
 management:
@@ -63,4 +78,4 @@ management:
 
 logging:
   level:
-    org.springframework.cloud.netflix.feign: debug
+    org.springframework.cloud.openfeign: debug
